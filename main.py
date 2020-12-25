@@ -14,5 +14,22 @@ def addState(name, totalcases, totaldeaths, dailycases):
         print('An error has occured')
 
 
-def fetchData(name):
+def getStateData(name):
     try:
+        cursor.execute(
+            """SELECT * FROM state WHERE name='%s'""", name)
+        print(cursor.fetchall())
+    except:
+        print("Could not gather state data, the input could be spelled wrong.")
+
+
+def getCountyData(name):
+    try:
+        cursor.execute(
+            """SELECT * FROM county WHERE name='%s'""", name)
+        print(cursor.fetchall())
+    except:
+        print("Could not gather county data, the input could be spelled wrong.")
+
+
+addState('fakestate', 13000, 1300, 12)
